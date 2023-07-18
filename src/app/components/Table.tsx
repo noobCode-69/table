@@ -82,7 +82,6 @@ const Table: React.FC<TableProps> = ({
                 } else if (order == "DESC") {
                   nextOrder = "NORMAL";
                 }
-
                 return (
                   <th
                     onClick={() =>
