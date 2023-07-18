@@ -7,32 +7,63 @@ interface TableProps<> {
   itemsPerPage: number;
 }
 
-const Table: React.FC<TableProps> = ({ headers, rows, itemsPerPage }) => {
-  const [currPage, setCurrPage] = useState(1);
-
+const Table: React.FC<TableProps> = ({
+  headers,
+  rows: propRows,
+  itemsPerPage,
+}) => {
   const getInitalItemsToRender = (rows: any[], itemsPerPage: number) => {
     if (rows.length <= itemsPerPage) {
       return [...rows];
     }
-    return rows.slice(0, itemsPerPage);
+    return [...rows.slice(0, itemsPerPage)];
   };
 
-  const lastPage = useMemo(() => {
-    return Math.ceil(rows.length / itemsPerPage);
-  }, [rows, itemsPerPage]);
+  const [currPage, setCurrPage] = useState(1);
+
+  const [rows, setRows] = useState(propRows);
+
+  const [currSortingOrder, setCurrentSortingOrder] = useState<{
+    [key: string]: string;
+  }>({});
 
   const [itemsToRender, setItemsToRender] = useState(() =>
     getInitalItemsToRender(rows, itemsPerPage)
   );
 
+  const lastPage = useMemo(() => {
+    return Math.ceil(rows.length / itemsPerPage);
+  }, [rows.length, itemsPerPage]);
+
   useEffect(() => {
     if (rows.length <= itemsPerPage) {
-      return setItemsToRender(rows);
+      return setItemsToRender([...rows]);
     }
     const startIndex = (currPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
-    setItemsToRender(rows.slice(startIndex, endIndex));
+    setItemsToRender([...rows.slice(startIndex, endIndex)]);
   }, [currPage, itemsPerPage, rows]);
+
+  useEffect(() => {
+    const comparator = Object.entries(currSortingOrder).map(([key, value]) => {
+      const dataObject = headers.find((obj) => obj.dataIndex === key);
+      return dataObject ? dataObject.sort : undefined;
+    })[0];
+
+    if (!comparator) {
+      return;
+    }
+
+    if (Object.values(currSortingOrder)[0] == "NORMAL") {
+      setRows(propRows);
+    } else if (Object.values(currSortingOrder)[0] == "ASC") {
+      const sortedOrder = [...propRows].sort(comparator);
+      setRows(sortedOrder);
+    } else {
+      const sortedOrder = [...propRows].sort(comparator).reverse();
+      setRows(sortedOrder);
+    }
+  }, [currSortingOrder, headers, rows, propRows]);
 
   return (
     <div>
@@ -40,7 +71,29 @@ const Table: React.FC<TableProps> = ({ headers, rows, itemsPerPage }) => {
         <thead>
           <tr>
             {headers.map((header, index) => {
-              const { title } = header;
+              const { title, dataIndex, sort } = header;
+              if (sort) {
+                const order = currSortingOrder[dataIndex] || "NORMAL";
+                let nextOrder = "";
+                if (order == "NORMAL") {
+                  nextOrder = "ASC";
+                } else if (order == "ASC") {
+                  nextOrder = "DESC";
+                } else if (order == "DESC") {
+                  nextOrder = "NORMAL";
+                }
+
+                return (
+                  <th
+                    onClick={() =>
+                      setCurrentSortingOrder({ [dataIndex]: nextOrder })
+                    }
+                    key={index}
+                  >
+                    {title} : {order}
+                  </th>
+                );
+              }
               return <th key={index}>{title}</th>;
             })}
           </tr>
@@ -76,7 +129,5 @@ const Table: React.FC<TableProps> = ({ headers, rows, itemsPerPage }) => {
     </div>
   );
 };
-
-// currPage * itemsPerPage >= rows
 
 export default Table;

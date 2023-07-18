@@ -3,6 +3,7 @@ import Table from "./components/Table";
 import { ColumnType } from "./types/Table";
 
 interface DataType {
+  index: number;
   name: string;
   age: number;
   address: string;
@@ -12,12 +13,19 @@ interface DataType {
 
 const headers: ColumnType<DataType>[] = [
   {
+    title: "Index",
+    dataIndex: "index",
+  },
+  {
     title: "Name",
     dataIndex: "name",
   },
   {
     title: "Age",
     dataIndex: "age",
+    sort: (a: any, b: any) => {
+      return a.age - b.age;
+    },
   },
   {
     title: "Address",
@@ -51,115 +59,126 @@ const headers: ColumnType<DataType>[] = [
 
 const rows: DataType[] = [
   {
+    index: 1,
     name: "Md Sohel",
-    age: 20,
+    age: 1,
     address: "Bokaro Steel City",
     tags: ["Developer", "Learner"],
     twitter: {
       twitterProfileName: "so_hell",
-      twitterProfileUrl: "https://twitter.com/iamsrk",
+      twitterProfileUrl: "https://twitter.com/",
     },
   },
   {
+    index: 2,
     name: "Rahul Kumar",
-    age: 23,
+    age: 2,
     address: "Jaipur ",
     tags: ["Developer", "Achiever"],
     twitter: {
       twitterProfileName: "ra_hul",
-      twitterProfileUrl: "https://twitter.com/iamsrk",
+      twitterProfileUrl: "https://twitter.com/",
     },
   },
   {
+    index: 3,
     name: "Manan Gupta",
-    age: 20,
+    age: 3,
     address: "Delhi",
     tags: ["Developer", "Struggler"],
     twitter: {
       twitterProfileName: "mgta",
-      twitterProfileUrl: "https://twitter.com/iamsrk",
+      twitterProfileUrl: "https://twitter.com/",
     },
   },
   {
+    index: 4,
+    name: "Harshil Gupta",
+    age: 4,
+    address: "Uttar Pradesh",
+    tags: ["Developer", "Businessman"],
+    twitter: {
+      twitterProfileName: "harshil_03",
+      twitterProfileUrl: "https://twitter.com/",
+    },
+  },
+  {
+    index: 5,
+    name: "Harshit Chauhan",
+    age: 5,
+    address: "Roorkee",
+    tags: ["Developer", "Small Height"],
+    twitter: {
+      twitterProfileName: "chauhan",
+      twitterProfileUrl: "https://twitter.com/",
+    },
+  },
+
+  {
+    index: 6,
+    name: "Rahul Kumar",
+    age: 6,
+    address: "Jaipur ",
+    tags: ["Developer", "Achiever"],
+    twitter: {
+      twitterProfileName: "ra_hul",
+      twitterProfileUrl: "https://twitter.com/",
+    },
+  },
+  {
+    index: 7,
+    name: "Manan Gupta",
+    age: 7,
+    address: "Delhi",
+    tags: ["Developer", "Struggler"],
+    twitter: {
+      twitterProfileName: "mgta",
+      twitterProfileUrl: "https://twitter.com/",
+    },
+  },
+
+  {
+    index: 8,
+    name: "Manan Gupta",
+    age: 8,
+    address: "Delhi",
+    tags: ["Developer", "Struggler"],
+    twitter: {
+      twitterProfileName: "mgta",
+      twitterProfileUrl: "https://twitter.com/",
+    },
+  },
+  {
+    index: 9,
+    name: "Manan Gupta",
+    age: 9,
+    address: "Delhi",
+    tags: ["Developer", "Struggler"],
+    twitter: {
+      twitterProfileName: "mgta",
+      twitterProfileUrl: "https://twitter.com/",
+    },
+  },
+  {
+    index: 10,
     name: "Harshil Gupta",
     age: 10,
     address: "Uttar Pradesh",
     tags: ["Developer", "Businessman"],
     twitter: {
       twitterProfileName: "harshil_03",
-      twitterProfileUrl: "https://twitter.com/iamsrk",
+      twitterProfileUrl: "https://twitter.com/",
     },
   },
   {
+    index: 11,
     name: "Harshit Chauhan",
-    age: 20,
+    age: 11,
     address: "Roorkee",
     tags: ["Developer", "Small Height"],
     twitter: {
       twitterProfileName: "chauhan",
-      twitterProfileUrl: "https://twitter.com/iamsrk",
-    },
-  },
-
-  {
-    name: "Rahul Kumar",
-    age: 23,
-    address: "Jaipur ",
-    tags: ["Developer", "Achiever"],
-    twitter: {
-      twitterProfileName: "ra_hul",
-      twitterProfileUrl: "https://twitter.com/iamsrk",
-    },
-  },
-  {
-    name: "Manan Gupta",
-    age: 20,
-    address: "Delhi",
-    tags: ["Developer", "Struggler"],
-    twitter: {
-      twitterProfileName: "mgta",
-      twitterProfileUrl: "https://twitter.com/iamsrk",
-    },
-  },
-
-  {
-    name: "Manan Gupta",
-    age: 20,
-    address: "Delhi",
-    tags: ["Developer", "Struggler"],
-    twitter: {
-      twitterProfileName: "mgta",
-      twitterProfileUrl: "https://twitter.com/iamsrk",
-    },
-  },
-  {
-    name: "Manan Gupta",
-    age: 20,
-    address: "Delhi",
-    tags: ["Developer", "Struggler"],
-    twitter: {
-      twitterProfileName: "mgta",
-      twitterProfileUrl: "https://twitter.com/iamsrk",
-    },
-  },
-  {
-    name: "Harshil Gupta",
-    age: 10,
-    address: "Uttar Pradesh",
-    tags: ["Developer", "Businessman"],
-    twitter: {
-      twitterProfileName: "harshil_03",
-      twitterProfileUrl: "https://twitter.com/iamsrk",
-    },
-  },
-  {
-    name: "Harshit Chauhan",
-    age: 20,
-    address: "Roorkee",
-    tags: ["Developer", "Small Height"],
-    twitter: {
-      twitterProfileName: "chauhan",
-      twitterProfileUrl: "https://twitter.com/iamsrk",
+      twitterProfileUrl: "https://twitter.com/",
     },
   },
 ];
