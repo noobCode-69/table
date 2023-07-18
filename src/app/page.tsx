@@ -1,5 +1,4 @@
 "use client";
-import { useEffect } from "react";
 import Table from "./components/Table";
 import { ColumnType } from "./types/Table";
 
@@ -8,6 +7,7 @@ interface DataType {
   age: number;
   address: string;
   tags: string[];
+  twitter: { twitterProfileName: string; twitterProfileUrl: string };
 }
 
 const headers: ColumnType<DataType>[] = [
@@ -22,6 +22,13 @@ const headers: ColumnType<DataType>[] = [
   {
     title: "Address",
     dataIndex: "address",
+  },
+  {
+    title: "Twitter",
+    dataIndex: "twitter",
+    render: ({ twitterProfileName, twitterProfileUrl }) => {
+      return <a href={twitterProfileUrl}>{twitterProfileName}</a>;
+    },
   },
   {
     title: "Tags",
@@ -48,35 +55,117 @@ const rows: DataType[] = [
     age: 20,
     address: "Bokaro Steel City",
     tags: ["Developer", "Learner"],
+    twitter: {
+      twitterProfileName: "so_hell",
+      twitterProfileUrl: "https://twitter.com/iamsrk",
+    },
   },
   {
     name: "Rahul Kumar",
     age: 23,
     address: "Jaipur ",
     tags: ["Developer", "Achiever"],
+    twitter: {
+      twitterProfileName: "ra_hul",
+      twitterProfileUrl: "https://twitter.com/iamsrk",
+    },
   },
   {
     name: "Manan Gupta",
     age: 20,
     address: "Delhi",
     tags: ["Developer", "Struggler"],
+    twitter: {
+      twitterProfileName: "mgta",
+      twitterProfileUrl: "https://twitter.com/iamsrk",
+    },
   },
   {
     name: "Harshil Gupta",
     age: 10,
     address: "Uttar Pradesh",
     tags: ["Developer", "Businessman"],
+    twitter: {
+      twitterProfileName: "harshil_03",
+      twitterProfileUrl: "https://twitter.com/iamsrk",
+    },
   },
   {
     name: "Harshit Chauhan",
     age: 20,
     address: "Roorkee",
     tags: ["Developer", "Small Height"],
+    twitter: {
+      twitterProfileName: "chauhan",
+      twitterProfileUrl: "https://twitter.com/iamsrk",
+    },
+  },
+
+  {
+    name: "Rahul Kumar",
+    age: 23,
+    address: "Jaipur ",
+    tags: ["Developer", "Achiever"],
+    twitter: {
+      twitterProfileName: "ra_hul",
+      twitterProfileUrl: "https://twitter.com/iamsrk",
+    },
+  },
+  {
+    name: "Manan Gupta",
+    age: 20,
+    address: "Delhi",
+    tags: ["Developer", "Struggler"],
+    twitter: {
+      twitterProfileName: "mgta",
+      twitterProfileUrl: "https://twitter.com/iamsrk",
+    },
+  },
+
+  {
+    name: "Manan Gupta",
+    age: 20,
+    address: "Delhi",
+    tags: ["Developer", "Struggler"],
+    twitter: {
+      twitterProfileName: "mgta",
+      twitterProfileUrl: "https://twitter.com/iamsrk",
+    },
+  },
+  {
+    name: "Manan Gupta",
+    age: 20,
+    address: "Delhi",
+    tags: ["Developer", "Struggler"],
+    twitter: {
+      twitterProfileName: "mgta",
+      twitterProfileUrl: "https://twitter.com/iamsrk",
+    },
+  },
+  {
+    name: "Harshil Gupta",
+    age: 10,
+    address: "Uttar Pradesh",
+    tags: ["Developer", "Businessman"],
+    twitter: {
+      twitterProfileName: "harshil_03",
+      twitterProfileUrl: "https://twitter.com/iamsrk",
+    },
+  },
+  {
+    name: "Harshit Chauhan",
+    age: 20,
+    address: "Roorkee",
+    tags: ["Developer", "Small Height"],
+    twitter: {
+      twitterProfileName: "chauhan",
+      twitterProfileUrl: "https://twitter.com/iamsrk",
+    },
   },
 ];
 
 export default function Home() {
-  return <Table headers={headers} rows={rows} />;
+  return <Table headers={headers} rows={rows} itemsPerPage={5} />;
 }
 
 /**
