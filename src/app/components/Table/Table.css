@@ -14,12 +14,10 @@
 
 .caption {
   margin-left: auto;
-
 }
 .sortable-column {
-    display: flex;
+  display: flex;
 }
-
 
 .sortable-column:hover {
   cursor: pointer;

@@ -12,13 +12,14 @@ import {
   Box,
   Text,
 } from "@chakra-ui/react";
+
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
+import { BsThreeDots } from "react-icons/bs";
 
 import { ChakraProvider, CSSReset } from "@chakra-ui/react";
 import { extendTheme } from "@chakra-ui/react";
 
-const theme = extendTheme({});
-
+export const theme = extendTheme({});
 enum SortingOrder {
   Normal = "NORMAL",
   Ascending = "ASC",
@@ -92,8 +93,12 @@ const TableComponent: React.FC<TableProps<any>> = ({
       <CSSReset />
       <Box className="form" overflowX="auto">
         <Table
+          variant={"striped"}
           size={"sm"}
-          __css={{ "table-layout": "fixed", width: "full" }}
+          __css={{
+            "table-layout": "fixed",
+            width: "full",
+          }}
           width={"100%"}
         >
           <Thead>
@@ -132,22 +137,9 @@ const TableComponent: React.FC<TableProps<any>> = ({
                           marginLeft: "auto",
                         }}
                       >
-                        <IoIosArrowUp
-                          style={{
-                            color:
-                              order == SortingOrder.Ascending
-                                ? "blue"
-                                : "inherit",
-                          }}
-                        />
-                        <IoIosArrowDown
-                          style={{
-                            color:
-                              order == SortingOrder.Descending
-                                ? "blue"
-                                : "inherit",
-                          }}
-                        />
+                        {order == SortingOrder.Ascending && <IoIosArrowUp />}
+                        {order == SortingOrder.Normal && <BsThreeDots />}
+                        {order == SortingOrder.Descending && <IoIosArrowDown />}
                       </Box>
                     </Th>
                   );
@@ -178,13 +170,14 @@ const TableComponent: React.FC<TableProps<any>> = ({
       <Box className="metadata" width="100%">
         {caption && (
           <Box className="caption">
-            <Text>HELLO THERE HOW ARE YOU</Text>
+            <Text fontSize={"sm"}>*{caption}</Text>
           </Box>
         )}
 
         <Box className="pagination">
           <Button
             isDisabled={currentPage === 1}
+            size={"sm"}
             onClick={() => setCurrentPage(currentPage - 1)}
           >
             Prev
@@ -192,6 +185,7 @@ const TableComponent: React.FC<TableProps<any>> = ({
           <Button
             isDisabled={currentPage === lastPage}
             onClick={() => setCurrentPage(currentPage + 1)}
+            size={"sm"}
           >
             Next
           </Button>
