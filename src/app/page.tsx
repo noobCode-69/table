@@ -1,5 +1,5 @@
 "use client";
-import Table from "./components/Table";
+import Table from "./components/Table/Table";
 import { ColumnType } from "./types/Table";
 
 interface DataType {
@@ -35,7 +35,11 @@ const headers: ColumnType<DataType>[] = [
     title: "Twitter",
     dataIndex: "twitter",
     render: ({ twitterProfileName, twitterProfileUrl }) => {
-      return <a href={twitterProfileUrl}>{twitterProfileName}</a>;
+      return (
+        <a style={{ color: "blue" }} href={twitterProfileUrl}>
+          {twitterProfileName}
+        </a>
+      );
     },
   },
   {
@@ -46,7 +50,15 @@ const headers: ColumnType<DataType>[] = [
         <div>
           {tags.map((tag: any, index: any) => {
             return (
-              <span style={{ color: "red" }} key={index}>
+              <span
+                style={{
+                  margin: "0.25rem 0.5rem",
+                  padding: "0.25rem 1rem",
+                  outline: "1px solid black",
+                  display: "inline-block",
+                }}
+                key={index}
+              >
                 {tag}
               </span>
             );
@@ -60,125 +72,83 @@ const headers: ColumnType<DataType>[] = [
 const rows: DataType[] = [
   {
     index: 1,
-    name: "Md Sohel",
-    age: 1,
-    address: "Bokaro Steel City",
-    tags: ["Developer", "Learner"],
+    name: "John Doe",
+    age: 30,
+    address: "123 Main Street, Anytown, CA 12345",
+    tags: ["coding", "programming"],
     twitter: {
-      twitterProfileName: "so_hell",
-      twitterProfileUrl: "https://twitter.com/",
+      twitterProfileName: "johndoe",
+      twitterProfileUrl: "https://twitter.com/johndoe",
     },
   },
   {
     index: 2,
-    name: "Rahul Kumar",
-    age: 2,
-    address: "Jaipur ",
-    tags: ["Developer", "Achiever"],
+    name: "Jane Doe",
+    age: 25,
+    address: "456 Elm Street, Anytown, CA 12345",
+    tags: ["ux", "ui"],
     twitter: {
-      twitterProfileName: "ra_hul",
-      twitterProfileUrl: "https://twitter.com/",
+      twitterProfileName: "janedoe",
+      twitterProfileUrl: "https://twitter.com/janedoe",
     },
   },
   {
     index: 3,
-    name: "Manan Gupta",
-    age: 3,
-    address: "Delhi",
-    tags: ["Developer", "Struggler"],
+    name: "Paul Smith",
+    age: 60,
+    address: "789 Oak Street, Anytown, CA 12345",
+    tags: ["guitar", "poetry"],
     twitter: {
-      twitterProfileName: "mgta",
-      twitterProfileUrl: "https://twitter.com/",
-    },
-  },
-  {
-    index: 4,
-    name: "Harshil Gupta",
-    age: 4,
-    address: "Uttar Pradesh",
-    tags: ["Developer", "Businessman"],
-    twitter: {
-      twitterProfileName: "harshil_03",
-      twitterProfileUrl: "https://twitter.com/",
-    },
-  },
-  {
-    index: 5,
-    name: "Harshit Chauhan",
-    age: 5,
-    address: "Roorkee",
-    tags: ["Developer", "Small Height"],
-    twitter: {
-      twitterProfileName: "chauhan",
-      twitterProfileUrl: "https://twitter.com/",
+      twitterProfileName: "paulsmith",
+      twitterProfileUrl: "https://twitter.com/paulsmith",
     },
   },
 
   {
-    index: 6,
-    name: "Rahul Kumar",
-    age: 6,
-    address: "Jaipur ",
-    tags: ["Developer", "Achiever"],
+    index: 3,
+    name: "Paul Smith",
+    age: 60,
+    address: "789 Oak Street, Anytown, CA 12345",
+    tags: ["guitar", "poetry"],
     twitter: {
-      twitterProfileName: "ra_hul",
-      twitterProfileUrl: "https://twitter.com/",
-    },
-  },
-  {
-    index: 7,
-    name: "Manan Gupta",
-    age: 7,
-    address: "Delhi",
-    tags: ["Developer", "Struggler"],
-    twitter: {
-      twitterProfileName: "mgta",
-      twitterProfileUrl: "https://twitter.com/",
+      twitterProfileName: "paulsmith",
+      twitterProfileUrl: "https://twitter.com/paulsmith",
     },
   },
 
   {
-    index: 8,
-    name: "Manan Gupta",
-    age: 8,
-    address: "Delhi",
-    tags: ["Developer", "Struggler"],
+    index: 3,
+    name: "Paul Smith",
+    age: 60,
+    address: "789 Oak Street, Anytown, CA 12345",
+    tags: ["guitar", "poetry"],
     twitter: {
-      twitterProfileName: "mgta",
-      twitterProfileUrl: "https://twitter.com/",
+      twitterProfileName: "paulsmith",
+      twitterProfileUrl: "https://twitter.com/paulsmith",
     },
   },
+
   {
-    index: 9,
-    name: "Manan Gupta",
-    age: 9,
-    address: "Delhi",
-    tags: ["Developer", "Struggler"],
+    index: 3,
+    name: "Paul Smith",
+    age: 60,
+    address: "789 Oak Street, Anytown, CA 12345",
+    tags: ["guitar", "poetry"],
     twitter: {
-      twitterProfileName: "mgta",
-      twitterProfileUrl: "https://twitter.com/",
+      twitterProfileName: "paulsmith",
+      twitterProfileUrl: "https://twitter.com/paulsmith",
     },
   },
+
   {
-    index: 10,
-    name: "Harshil Gupta",
-    age: 10,
-    address: "Uttar Pradesh",
-    tags: ["Developer", "Businessman"],
+    index: 3,
+    name: "Paul Smith",
+    age: 60,
+    address: "789 Oak Street, Anytown, CA 12345",
+    tags: ["guitar", "poetry"],
     twitter: {
-      twitterProfileName: "harshil_03",
-      twitterProfileUrl: "https://twitter.com/",
-    },
-  },
-  {
-    index: 11,
-    name: "Harshit Chauhan",
-    age: 11,
-    address: "Roorkee",
-    tags: ["Developer", "Small Height"],
-    twitter: {
-      twitterProfileName: "chauhan",
-      twitterProfileUrl: "https://twitter.com/",
+      twitterProfileName: "paulsmith",
+      twitterProfileUrl: "https://twitter.com/paulsmith",
     },
   },
 ];
