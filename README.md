@@ -1,15 +1,11 @@
-
-
 <div align="center">
     <h1 align="center">Reusable Table</h1>
     <p align="center">
-	Reusable Tables (center) is a flexible and customizable library that provides dynamic rendering, custom sorting, and pagination features for displaying data in a tabular format using JSX. This library aims to simplify the process of creating tables with various features, making it easy to integrate into your projects.
+	Reusable Tables: A flexible JSX component for dynamic rendering, custom sorting, and pagination, simplifying tabular data display in your projects
     </p>
     <br/>
   
 </div>
-
-
 
 ## Features
 
@@ -30,8 +26,6 @@ The following features are planned for future releases:
 - **Fetch Through API Feature**: Enable data retrieval through APIs, ensuring seamless integration with server-side data.
 
 - **Resize Feature**: Provide the ability to resize table columns, making it easier to view and analyze different data fields.
-
-
 
 ## Example Usage
 
@@ -71,3 +65,4 @@ const rows= [
 	rows={rows}
 	itemsPerPage={5}
 />
+```

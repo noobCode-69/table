@@ -115,7 +115,7 @@ const rows: DataType[] = [
     purchaseId: 7,
     email: "andrew@example.com",
     name: "Andrew Davis",
-    status: "Waiting",
+    status: "Failed",
   },
   {
     timestamp: "2023-07-22T16:45:00",
@@ -136,7 +136,7 @@ const rows: DataType[] = [
     purchaseId: 10,
     email: "amanda@example.com",
     name: "Amanda Clark",
-    status: "Paid",
+    status: "Failed",
   },
   {
     timestamp: "2023-07-27T19:00:00",
@@ -164,7 +164,7 @@ const rows: DataType[] = [
     purchaseId: 14,
     email: "grace@example.com",
     name: "Grace Thompson",
-    status: "Paid",
+    status: "Failed",
   },
   {
     timestamp: "2023-05-19T22:00:00",
@@ -223,8 +223,7 @@ export default function Home() {
           </li>
           <li>
             <span className="feature-title">Pagination Feature</span>: Just
-            provide the `itemsPerPage` variable, and pagination
-            will be done.
+            provide the `itemsPerPage` variable, and pagination will be done.
           </li>
         </ul>
       </div>
